@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NftyTech Design System - Dark Glassmorphic Theme with Neon Teal Accents */
+
+@layer base {
+  :root {
+    /* Core brand colors */
+    --neon-teal: 158 64% 52%;
+    --neon-teal-glow: 158 64% 52%;
+    --dark-bg: 220 27% 4%;
+    --dark-card: 220 20% 8%;
+    --dark-surface: 220 15% 12%;
+    
+    /* Design system colors */
+    --background: 220 27% 4%;
+    --foreground: 220 20% 95%;
+
+    --card: 220 20% 8%;
+    --card-foreground: 220 20% 95%;
+
+    --popover: 220 20% 8%;
+    --popover-foreground: 220 20% 95%;
+
+    --primary: 158 64% 52%;
+    --primary-foreground: 220 27% 4%;
+
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 220 20% 85%;
+
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 158 64% 52%;
+    --accent-foreground: 220 27% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 20% 95%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 12%;
+    --ring: 158 64% 52%;
+
+    --radius: 0.75rem;
+
+    /* Custom glassmorphism variables */
+    --glass-bg: 220 20% 8%;
+    --glass-border: 220 15% 18%;
+    --glass-glow: 158 64% 52%;
+    
+    /* Gradients */
+    --gradient-bg: linear-gradient(135deg, hsl(220 27% 4%) 0%, hsl(230 25% 6%) 50%, hsl(215 30% 8%) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(158 64% 52%) 0%, hsl(170 60% 45%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(220 20% 8% / 0.8) 0%, hsla(220 15% 12% / 0.6) 100%);
+    
+    /* Shadows and glows */
+    --shadow-glass: 0 8px 32px hsla(220 27% 4% / 0.5);
+    --shadow-neon: 0 0 20px hsla(158 64% 52% / 0.3);
+    --shadow-neon-hover: 0 0 30px hsla(158 64% 52% / 0.5);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: box-shadow 0.3s ease, border-color 0.3s ease;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sora;
+  }
+}
+
+@layer components {
+  /* Glassmorphic card component */
+  .glass-card {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+    transition: var(--transition-glow);
+  }
+
+  .glass-card-glow {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-glow) / 0.3);
+    box-shadow: var(--shadow-glass), var(--shadow-neon);
+    transition: var(--transition-glow);
+  }
+
+  .glass-card-glow:hover {
+    border-color: hsl(var(--glass-glow) / 0.5);
+    box-shadow: var(--shadow-glass), var(--shadow-neon-hover);
+  }
+
+  /* Neon button variants */
+  .btn-neon {
+    background: var(--gradient-neon);
+    color: hsl(var(--primary-foreground));
+    border: 1px solid hsl(var(--primary));
+    box-shadow: var(--shadow-neon);
+    transition: var(--transition-glow);
+  }
+
+  .btn-neon:hover {
+    box-shadow: var(--shadow-neon-hover);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost-neon {
+    background: transparent;
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--primary) / 0.3);
+    transition: var(--transition-glow);
+  }
+
+  .btn-ghost-neon:hover {
+    background: hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary));
+    box-shadow: var(--shadow-neon);
+  }
+
+  /* Input with neon focus */
+  .input-neon {
+    background: hsl(var(--input) / 0.5);
+    border: 1px solid hsl(var(--border));
+    backdrop-filter: blur(10px);
+    transition: var(--transition-glow);
+  }
+
+  .input-neon:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.3);
+    outline: none;
+  }
+
+  /* Animations */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-pulse-neon {
+    animation: pulse-neon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: var(--shadow-neon);
+  }
+  to {
+    box-shadow: var(--shadow-neon-hover);
+  }
+}
+
+@keyframes pulse-neon {
+  0%, 100% {
+    border-color: hsl(var(--primary) / 0.3);
+  }
+  50% {
+    border-color: hsl(var(--primary) / 0.8);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
